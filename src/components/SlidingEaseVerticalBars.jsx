@@ -49,7 +49,7 @@ export default function SlidingEaseVerticalBars({
   adaptive = true,
   accentEvery = 6,
   lineWidth = 1,
-  animationSpeed = 0.005,
+  animationSpeed = 0.009,
   removeWaveLine = true,
 }) {
   const [isDark, setIsDark] = useState(
