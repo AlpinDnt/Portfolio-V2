@@ -56,10 +56,10 @@ export default function Hero() {
                 src="/images/hero-marble.svg"
                 alt=""
                 draggable={false}
-                className="h-full w-[200%] max-w-none object-cover"
+                className="h-full w-full object-cover"
                 loading="eager"
-                animate={reduce ? {} : { x: ["0%", "-20%", "0%"] }}
-                transition={reduce ? {} : { duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                animate={reduce ? {} : { scale: [1.15, 1.32, 1.15], rotate: [0, 7, 0] }}
+                transition={reduce ? {} : { duration: 12, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.span>{" "}
             interfaces
