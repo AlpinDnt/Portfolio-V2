@@ -112,7 +112,7 @@ export const projects = {
       tech: ["React", "Tailwind", "Vite"],
       liveUrl: "https://serene-stayy.vercel.app/",
       githubUrl: "https://github.com/AlpinDnt/serene-stayy",
-      year: "2025",
+      year: "2026",
       image: "/images/serene-stay.png",
     },
     {
@@ -125,7 +125,7 @@ export const projects = {
       tech: ["React", "Tailwind", "Context API"],
       liveUrl: "https://lumina-store-online.vercel.app/",
       githubUrl: "https://github.com/AlpinDnt/Lumina-Store",
-      year: "2025",
+      year: "2026",
       image: "/images/lumina-store.png",
     },
     {
@@ -138,7 +138,7 @@ export const projects = {
       tech: ["Next.js", "React", "Tailwind"],
       liveUrl: "https://kroma-coffee.vercel.app/",
       githubUrl: "https://github.com/AlpinDnt/kroma-coffee",
-      year: "2025",
+      year: "2026",
       image: "/images/kroma-coffee.png",
     },
   ],
