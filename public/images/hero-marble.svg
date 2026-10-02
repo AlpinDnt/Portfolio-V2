@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Neon marble ribbons">
+  <defs>
+    <linearGradient id="mrb1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5b8cff"/>
+      <stop offset="0.55" stop-color="#9fd0ff"/>
+      <stop offset="1" stop-color="#ff5a8e"/>
+    </linearGradient>
+    <linearGradient id="mrb2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff5a8e"/>
+      <stop offset="1" stop-color="#ffd166"/>
+    </linearGradient>
+    <linearGradient id="mrb3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6aa8ff"/>
+      <stop offset="0.5" stop-color="#fff3c4"/>
+      <stop offset="1" stop-color="#ff5a3c"/>
+    </linearGradient>
+    <linearGradient id="mrb4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffd166"/>
+      <stop offset="1" stop-color="#ff3d71"/>
+    </linearGradient>
+    <linearGradient id="mrb5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5b8cff"/>
+      <stop offset="0.55" stop-color="#ff5a8e"/>
+      <stop offset="1" stop-color="#ff5a3c"/>
+    </linearGradient>
+    <linearGradient id="mrb6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9fd0ff"/>
+      <stop offset="1" stop-color="#ff8ab0"/>
+    </linearGradient>
+    <linearGradient id="mrb7" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff8ab0"/>
+      <stop offset="1" stop-color="#ffd166"/>
+    </linearGradient>
+    <filter id="mrGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="mrBig" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="42"/>
+    </filter>
+    <g id="mrRibbons" fill="none" stroke-linecap="round">
+      <path d="M-30,78 C90,38 190,108 320,72 S540,32 680,84" stroke="url(#mrb1)" stroke-width="11"/>
+      <path d="M-30,128 C100,168 230,88 370,124 S560,168 680,118" stroke="url(#mrb2)" stroke-width="6"/>
+      <path d="M-30,196 C110,150 250,238 390,190 S590,148 680,204" stroke="url(#mrb3)" stroke-width="13"/>
+      <path d="M-30,252 C130,292 270,212 410,250 S590,296 680,242" stroke="url(#mrb4)" stroke-width="6"/>
+      <path d="M-30,314 C150,272 290,342 430,300 S600,268 680,322" stroke="url(#mrb5)" stroke-width="10"/>
+      <path d="M-30,30 C150,60 300,10 450,36 S600,60 680,28" stroke="url(#mrb6)" stroke-width="4"/>
+      <path d="M-30,344 C170,330 330,356 470,340 S600,332 680,348" stroke="url(#mrb7)" stroke-width="4"/>
+    </g>
+  </defs>
+  <rect width="640" height="360" fill="#0c0c0e"/>
+  <ellipse cx="120" cy="60" rx="180" ry="90" fill="#2b4bd8" opacity="0.28" filter="url(#mrBig)"/>
+  <ellipse cx="540" cy="320" rx="200" ry="100" fill="#d92d20" opacity="0.25" filter="url(#mrBig)"/>
+  <use href="#mrRibbons" filter="url(#mrGlow)" opacity="0.6"/>
+  <use href="#mrRibbons"/>
+  <g fill="none" stroke="#fff6d8" stroke-width="2.5" stroke-linecap="round" opacity="0.85">
+    <path d="M-30,78 C90,38 190,108 320,72 S540,32 680,84"/>
+    <path d="M-30,196 C110,150 250,238 390,190 S590,148 680,204"/>
+    <path d="M-30,314 C150,272 290,342 430,300 S600,268 680,322"/>
+  </g>
+</svg>

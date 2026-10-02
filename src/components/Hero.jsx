@@ -49,18 +49,17 @@ export default function Hero() {
             into <span className="text-stroke">clean</span>{" "}
             <motion.span
               aria-hidden="true"
-              className="relative inline-flex h-[0.62em] w-[1.4em] translate-y-[-0.08em] items-center overflow-hidden rounded-full bg-[#141210] align-middle"
+              className="relative inline-flex h-[0.62em] w-[1.4em] translate-y-[-0.08em] items-center overflow-hidden rounded-full bg-[#0c0c0e] align-middle"
               whileHover={reduce ? {} : { scale: 1.06, rotate: -2 }}
             >
-              <motion.span
-                className="absolute left-[8%] top-[-30%] aspect-square w-[55%] rounded-full bg-[var(--accent)] blur-sm"
-                animate={reduce ? {} : { x: ["0%", "70%", "0%"], y: ["0%", "45%", "0%"] }}
-                transition={reduce ? {} : { duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.span
-                className="absolute bottom-[-35%] right-[6%] aspect-square w-[42%] rounded-full bg-[#fffcfa] opacity-90 blur-sm"
-                animate={reduce ? {} : { x: ["0%", "-60%", "0%"], y: ["0%", "-50%", "0%"] }}
-                transition={reduce ? {} : { duration: 9, repeat: Infinity, ease: "easeInOut" }}
+              <motion.img
+                src="/images/hero-marble.svg"
+                alt=""
+                draggable={false}
+                className="h-full w-[200%] max-w-none object-cover"
+                loading="eager"
+                animate={reduce ? {} : { x: ["0%", "-20%", "0%"] }}
+                transition={reduce ? {} : { duration: 10, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.span>{" "}
             interfaces
