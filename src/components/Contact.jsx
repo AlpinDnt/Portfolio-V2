@@ -219,10 +219,10 @@ export default function Contact() {
               className="group flex flex-1 items-center gap-0"
             >
               <span className="h-[2px] flex-1 bg-[var(--c-cta-line)] transition-colors group-hover:bg-[var(--c-cta-ink)]" />
-              <ArrowRight
-                className="h-5 w-5 -ml-1 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                weight="bold"
-              />
+                <ArrowRight
+                  className="h-5 w-5 -ml-1 shrink-0 text-[var(--c-cta-line)] transition-all duration-300 group-hover:translate-x-1 group-hover:text-[var(--c-cta-ink)]"
+                  weight="bold"
+                />
             </a>
             <a
               href={`mailto:${personal.email}`}
