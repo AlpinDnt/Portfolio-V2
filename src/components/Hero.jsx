@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowDown, ArrowUpRight, Asterisk } from "@phosphor-icons/react";
 import { hero, personal } from "../data.js";
-import FlowingDots from "./FlowingDots.jsx";
+import SlidingEaseVerticalBars from "./SlidingEaseVerticalBars.jsx";
 
 export default function Hero() {
   const reduce = useReducedMotion();
@@ -53,7 +53,7 @@ export default function Hero() {
               className="relative inline-flex h-[0.62em] w-[1.4em] translate-y-[-0.08em] items-center overflow-hidden rounded-full bg-[#141210] align-middle"
               whileHover={reduce ? {} : { scale: 1.06, rotate: -2 }}
             >
-              <FlowingDots />
+              <SlidingEaseVerticalBars />
             </motion.span>{" "}
             interfaces
           </motion.span>
