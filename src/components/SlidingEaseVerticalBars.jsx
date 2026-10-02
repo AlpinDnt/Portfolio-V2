@@ -8,12 +8,24 @@ const noise = (x, y, t) => {
   return (n + 1) / 2;
 };
 
-const hexToRgb = (hex) =>
-  [
-    Number.parseInt(hex.slice(1, 3), 16),
-    Number.parseInt(hex.slice(3, 5), 16),
-    Number.parseInt(hex.slice(5, 7), 16),
-  ].join(", ");
+const parseColor = (str) => {
+  const s = str.trim();
+  if (s.startsWith("#")) {
+    return {
+      c: [
+        Number.parseInt(s.slice(1, 3), 16),
+        Number.parseInt(s.slice(3, 5), 16),
+        Number.parseInt(s.slice(5, 7), 16),
+      ],
+      a: 1,
+    };
+  }
+  const parts = s.match(/rgba?\(([^)]+)\)/)[1].split(",").map(Number);
+  return { c: parts.slice(0, 3), a: parts[3] ?? 1 };
+};
+
+const toCss = (col, alpha = col.a) =>
+  `rgba(${col.c.map(Math.round).join(", ")}, ${alpha})`;
 
 const DARK_PALETTE = {
   background: "#141210",
@@ -72,6 +84,7 @@ export default function SlidingEaseVerticalBars({
   const animationFrameId = useRef(null);
   const mouseRef = useRef({ x: -9999, y: -9999, isDown: false });
   const transitionBursts = useRef([]);
+  const currentRef = useRef(null);
   const reduce = useReducedMotion();
 
   const getMouseInfluence = (x, y, maxDistance = 60) => {
@@ -176,17 +189,31 @@ export default function SlidingEaseVerticalBars({
         ? 4 * easingFactor * easingFactor * easingFactor
         : 1 - Math.pow(-2 * easingFactor + 2, 3) / 2;
 
-    const baseRgb = hexToRgb(colors.bar);
-    const accentRgb = hexToRgb(colors.accent);
+    // glide warna saat ini menuju target tema — transisi smooth, bukan jemporary
+    const target = {
+      background: parseColor(colors.background),
+      line: parseColor(colors.line),
+      bar: parseColor(colors.bar),
+      accent: parseColor(colors.accent),
+    };
+    if (!currentRef.current) {
+      currentRef.current = JSON.parse(JSON.stringify(target));
+    }
+    const cur = currentRef.current;
+    const LERP = 0.14;
+    for (const key of ["background", "line", "bar", "accent"]) {
+      cur[key].c = cur[key].c.map((v, i) => v + (target[key].c[i] - v) * LERP);
+      cur[key].a = target[key].a;
+    }
 
-    ctx.fillStyle = colors.background;
+    ctx.fillStyle = toCss(cur.background);
     ctx.fillRect(0, 0, width, height);
 
     for (let i = 0; i < numLines; i++) {
       const x = i * lineSpacing + lineSpacing / 2;
       const lineMouseInfluence = getMouseInfluence(x, height / 2);
       ctx.beginPath();
-      ctx.strokeStyle = colors.line;
+      ctx.strokeStyle = toCss(cur.line);
       ctx.lineWidth = lineWidth + lineMouseInfluence * 1.5;
       ctx.moveTo(x, 0);
       ctx.lineTo(x, height);
@@ -195,7 +222,7 @@ export default function SlidingEaseVerticalBars({
       const bars1 = pattern1[i] || [];
       const bars2 = pattern2[i] || [];
       const maxBars = Math.max(bars1.length, bars2.length);
-      const rgb = i % accentEvery === accentEvery - 1 ? accentRgb : baseRgb;
+      const col = i % accentEvery === accentEvery - 1 ? cur.accent : cur.bar;
       for (let j = 0; j < maxBars; j++) {
         let bar1 = bars1[j];
         let bar2 = bars2[j];
@@ -214,7 +241,7 @@ export default function SlidingEaseVerticalBars({
           bar1.width + (bar2.width - bar1.width) * smoothEasing + barMouseInfluence * 1.5 + burstInfluence * 2;
         if (bh > 0.1 && bw > 0.1) {
           const intensity = Math.min(1, 0.8 + barMouseInfluence * 0.2 + burstInfluence * 0.3);
-          ctx.fillStyle = `rgba(${rgb}, ${intensity})`;
+          ctx.fillStyle = toCss(col, intensity);
           ctx.fillRect(x - bw / 2, y - bh / 2, bw, bh);
         }
       }
@@ -227,7 +254,7 @@ export default function SlidingEaseVerticalBars({
         if (age < maxAge) {
           const progress = age / maxAge;
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(255, 252, 250, ${(1 - progress) * 0.2 * burst.intensity})`;
+          ctx.strokeStyle = toCss(cur.bar, (1 - progress) * 0.2 * burst.intensity);
           ctx.lineWidth = 1.5;
           ctx.arc(burst.x, burst.y, progress * 120, 0, 2 * Math.PI);
           ctx.stroke();
@@ -309,7 +336,7 @@ export default function SlidingEaseVerticalBars({
   }, [animate, drawFrame, resizeCanvas, handleMouseMove, handleMouseLeave, handleMouseDown, handleMouseUp, reduce]);
 
   return (
-    <div ref={wrapRef} className="absolute inset-0 h-full w-full overflow-hidden" style={{ backgroundColor: colors.background }}>
+    <div ref={wrapRef} className="absolute inset-0 h-full w-full overflow-hidden transition-colors duration-500" style={{ backgroundColor: colors.background }}>
       <canvas ref={canvasRef} className="block h-full w-full" />
     </div>
   );
