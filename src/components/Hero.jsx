@@ -24,8 +24,8 @@ export default function Hero() {
           className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--card)] px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]"
         >
           <span className="relative flex h-2 w-2">
-            <span className="absolute h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
-            <span className="h-2 w-2 rounded-full bg-green-500" />
+            <span className="absolute h-full w-full animate-ping rounded-full bg-[var(--status)] opacity-60" />
+              <span className="h-2 w-2 rounded-full bg-[var(--status)]" />
           </span>
           Available for freelance
         </motion.p>
@@ -81,7 +81,7 @@ export default function Hero() {
               href={hero.primaryCta.href}
               whileHover={reduce ? {} : { scale: 1.04 }}
               whileTap={reduce ? {} : { scale: 0.96 }}
-              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-semibold text-white"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-semibold text-[var(--accent-ink)]"
             >
               {hero.primaryCta.label}
               <ArrowUpRight className="h-4 w-4" weight="bold" />

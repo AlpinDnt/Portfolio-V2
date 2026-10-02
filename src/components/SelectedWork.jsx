@@ -22,7 +22,7 @@ function ArrowCursor({ sx, sy, side, visible }) {
           exit={{ opacity: 0, scale: 0.6 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
         >
-          <div className="flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-full bg-white text-black shadow-2xl">
+          <div className="flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-full bg-[var(--pill)] text-[var(--pill-ink)] shadow-2xl">
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={side}
@@ -184,7 +184,7 @@ export default function SelectedWork() {
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 />
-                <span className="absolute left-4 top-4 rounded-full bg-black/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white">
+                <span className="absolute left-4 top-4 rounded-full bg-[#141210]/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[#fffcfa]">
                   {item.category}
                 </span>
               </div>
@@ -215,7 +215,7 @@ export default function SelectedWork() {
                     rel="noreferrer"
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.96 }}
-                    className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white"
+                    className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-[var(--accent-ink)]"
                   >
                     Visit site <ArrowUpRight className="h-4 w-4" weight="bold" />
                   </motion.a>

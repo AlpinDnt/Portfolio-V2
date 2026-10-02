@@ -1,69 +1,43 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import {
-  PaperPlaneTilt,
-  Check,
-  Plus,
-  Copy,
+  ArrowRight,
   ArrowUpRight,
+  Copy,
+  GithubLogo,
+  InstagramLogo,
+  LinkedinLogo,
+  PaperPlaneTilt,
+  WhatsappLogo,
 } from "@phosphor-icons/react";
 import Reveal from "./Reveal.jsx";
 import { personal } from "../data.js";
 
-const fieldCls =
-  "w-full border-0 border-b border-[var(--line)] bg-transparent px-0 py-3 text-[15px] text-[var(--ink)] placeholder:text-[var(--faint)] transition-colors focus:border-[var(--accent)] focus:outline-none";
-
-const fieldLabel =
-  "font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]";
-
-const topics = [
-  "Landing page",
-  "Web app",
-  "UI revamp",
-  "Collaboration",
-  "Just saying hi",
-];
-
-const facts = [
-  ["Status", "Open", true],
+const availability = [
+  ["Status", "Open for projects", true],
   ["Base", "Bali · UTC+8", false],
   ["Work", "Remote worldwide", false],
   ["Reply", "Within a day", false],
 ];
 
-const textLink =
-  "inline-flex items-center gap-1 font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)] transition-colors hover:text-[var(--accent)]";
+const railLinks = [
+  { label: "GitHub", href: personal.github, Icon: GithubLogo },
+  { label: "LinkedIn", href: personal.linkedin, Icon: LinkedinLogo },
+  { label: "Instagram", href: personal.instagram, Icon: InstagramLogo },
+  { label: "WhatsApp", href: personal.whatsapp, Icon: WhatsappLogo },
+];
 
-function Word({ children, i }) {
-  return (
-    <motion.span
-      className="inline-block will-change-transform"
-      initial={{ y: "110%" }}
-      whileInView={{ y: 0 }}
-      viewport={{ once: true, amount: 0.6 }}
-      transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.span>
-  );
-}
+const bottomLinks = [
+  ["E-Mail", `mailto:${personal.email}`],
+  ["WhatsApp", personal.whatsapp],
+  ["GitHub", personal.github],
+  ["LinkedIn", personal.linkedin],
+  ["Instagram", personal.instagram],
+];
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [subject, setSubject] = useState("");
   const reduce = useReducedMotion();
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const subjectLine = encodeURIComponent(String(data.get("subject") || "Project inquiry"));
-    const body = encodeURIComponent(
-      `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`
-    );
-    window.location.href = `mailto:${personal.email}?subject=${subjectLine}&body=${body}`;
-    setSent(true);
-  };
 
   const copyEmail = async () => {
     try {
@@ -76,102 +50,94 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative scroll-mt-20 overflow-hidden border-t border-[var(--line)]">
-      {/* ambient wash */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 40% at 85% 10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 65%)",
-        }}
-      />
-
-      <div className="relative mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-24">
+    <section
+      id="contact"
+      className="contact-invert scroll-mt-20 bg-[var(--c-bg)] text-[var(--c-ink)] transition-colors duration-300"
+    >
+      <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-24">
+        {/* ===== TOP — CONTACT US ===== */}
         <div className="flex flex-wrap items-center gap-3">
-          <Reveal>
-            <p className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--card)] px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
-                <span className="h-2 w-2 rounded-full bg-green-500" />
-              </span>
-              Open for projects
-            </p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <p className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]">
-              Usually replies within a day
-            </p>
-          </Reveal>
+          <p className="inline-flex items-center gap-2 rounded-full border border-[var(--c-line)] bg-[var(--c-chip)] px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-muted)]">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute h-full w-full animate-ping rounded-full bg-[var(--status)] opacity-60" />
+              <span className="h-2 w-2 rounded-full bg-[var(--status)]" />
+            </span>
+            Open for projects
+          </p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-muted)]">
+            Usually replies within a day
+          </p>
         </div>
 
-        {/* masked-line headline reveal */}
-        <h2 className="mt-5 font-display text-[19vw] font-extrabold uppercase leading-[0.85] tracking-tight sm:text-7xl md:text-8xl">
-          <span className="block overflow-hidden pb-1">
-            <Word i={0}>Let's</Word> <Word i={1}><span className="text-stroke">talk</span></Word>
-          </span>
-        </h2>
+        <Reveal>
+          <h2 className="mt-6 font-display text-[17vw] font-extrabold uppercase leading-[0.85] tracking-tight text-[var(--c-ink)] sm:text-7xl md:text-8xl lg:text-[7.5rem]">
+            Contact us
+          </h2>
+        </Reveal>
+        <Reveal delay={0.06}>
+          <p className="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-[var(--c-muted)]">
+            Have any projects in mind? Don&apos;t hesitate to reach out,
+            and let&apos;s have a conversation.
+          </p>
+        </Reveal>
 
-        <div className="mt-10 grid items-start gap-10 lg:grid-cols-12">
-          {/* left — open editorial rows, no boxes */}
-          <div className="lg:col-span-5">
+        {/* ===== MIDDLE — GET IN TOUCH / SEND ===== */}
+        <div className="mt-12 grid items-stretch gap-10 border-t border-[var(--c-line)] pt-10 lg:grid-cols-[1.05fr_1fr_auto] lg:gap-0">
+          {/* left */}
+          <div className="lg:pr-12">
             <Reveal>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
-                01 — Pick a topic
+              <h3 className="text-[15px] font-extrabold uppercase leading-tight tracking-tight text-[var(--c-ink)]">
+                Get in touch
+              </h3>
+              <p className="mt-2 max-w-[42ch] text-[12.5px] leading-relaxed text-[var(--c-muted)]">
+                Simply Want To Connect Or Have A General Inquiry? Feel Free
+                To Reach Out, And I&apos;ll Get Back To You As Soon As I Can.
               </p>
-              <div className="mt-3 border-t border-[var(--line)]" role="group" aria-label="Message topic">
-                {topics.map((t, i) => {
-                  const active = subject === t;
-                  return (
-                    <button
-                      key={t}
-                      type="button"
-                      onClick={() => setSubject(active ? "" : t)}
-                      aria-pressed={active}
-                      className="group flex w-full items-center gap-3 border-b border-[var(--line)] py-3 text-left"
-                    >
-                      <span className="font-mono text-[11px] text-[var(--faint)]">
-                        0{i + 1}
-                      </span>
-                      <span
-                        className={`font-display text-2xl font-bold uppercase leading-none tracking-tight transition-all duration-300 group-hover:translate-x-1 sm:text-3xl ${
-                          active ? "text-[var(--accent)]" : ""
-                        }`}
-                      >
-                        {t}
-                      </span>
-                      <span className="ml-auto shrink-0">
-                        {active ? (
-                          <Check className="h-5 w-5 text-[var(--accent)]" weight="bold" />
-                        ) : (
-                          <Plus className="h-5 w-5 text-[var(--faint)] transition-colors group-hover:text-[var(--ink)]" weight="bold" />
-                        )}
-                      </span>
-                    </button>
-                  );
-                })}
+              <a
+                href={`mailto:${personal.email}`}
+                className="group mt-5 block font-display text-[8.4vw] font-extrabold uppercase leading-[0.9] tracking-tight text-[var(--c-ink)] sm:text-4xl lg:text-[2.9rem]"
+              >
+                <span className="break-all transition-colors group-hover:text-[var(--accent)]">
+                  {personal.email}
+                </span>
+              </a>
+              <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.18em] text-[var(--c-muted)] transition-colors hover:text-[var(--accent)]"
+                >
+                  <Copy className="h-3.5 w-3.5" />
+                  {copied ? "Copied!" : "Copy email"}
+                </button>
+                <a
+                  href={personal.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 font-mono text-xs uppercase tracking-[0.18em] text-[var(--c-muted)] transition-colors hover:text-[var(--accent)]"
+                >
+                  WhatsApp
+                  <ArrowUpRight className="h-3.5 w-3.5" weight="bold" />
+                </a>
               </div>
-              <p className="mt-3 text-sm text-[var(--muted)]">
-                The subject fills itself in — then tell me the details.
-              </p>
             </Reveal>
 
             <Reveal delay={0.06}>
-              <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
-                02 — Availability
-              </p>
-              <dl className="mt-3 border-t border-[var(--line)]">
-                {facts.map(([label, value, dot]) => (
+              <dl className="mt-8 border-t border-[var(--c-line)]">
+                {availability.map(([label, value, dot]) => (
                   <div
                     key={label}
-                    className="flex items-center justify-between gap-4 border-b border-[var(--line)] py-2.5"
+                    className="flex items-center justify-between gap-4 border-b border-[var(--c-line)] py-2.5"
                   >
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-muted)]">
                       {label}
                     </dt>
-                    <dd className="flex items-center gap-1.5 text-sm font-bold">
+                    <dd className="flex items-center gap-1.5 text-sm font-bold text-[var(--c-ink)]">
                       {dot ? (
-                        <span className="h-2 w-2 rounded-full bg-green-500" aria-hidden="true" />
+                        <span
+                          className="h-2 w-2 rounded-full bg-[var(--status)]"
+                          aria-hidden="true"
+                        />
                       ) : null}
                       {value}
                     </dd>
@@ -179,106 +145,127 @@ export default function Contact() {
                 ))}
               </dl>
             </Reveal>
+          </div>
 
-            <Reveal delay={0.1}>
-              <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
-                03 — Direct
+          {/* right — persis referensi: judul + deskripsi + pill button */}
+          <div className="flex flex-col justify-center self-stretch border-t border-[var(--c-line)] pt-10 lg:border-l lg:border-t-0 lg:px-12 lg:pt-0">
+            <Reveal className="flex h-full flex-col justify-center">
+              <h3 className="text-[15px] font-extrabold uppercase leading-tight tracking-tight text-[var(--c-ink)]">
+                Send a suggestion
+              </h3>
+              <p className="mt-2 max-w-[38ch] text-[12.5px] leading-relaxed text-[var(--c-muted)]">
+                Have A Landing Page, Web App, Or UI Revamp In Mind?
+                Share Your Brief — I&apos;ll Reply With Scope,
+                Timeline, And Next Steps.
               </p>
-              <a
-                href={`mailto:${personal.email}`}
-                className="group mt-2 flex items-center gap-2 text-xl font-bold tracking-tight sm:text-2xl"
+              <motion.a
+                href={personal.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={reduce ? {} : { scale: 1.04 }}
+                whileTap={reduce ? {} : { scale: 0.96 }}
+                className="mt-5 inline-flex w-fit items-center gap-3 rounded-full bg-[var(--c-btn)] py-2 pl-6 pr-2 text-[13px] font-medium text-[var(--c-btn-ink)]"
               >
-                <span className="break-all group-hover:underline">{personal.email}</span>
-                <ArrowUpRight
-                  className="h-5 w-5 shrink-0 text-[var(--accent)] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  weight="bold"
-                />
-              </a>
-              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
-                <button type="button" onClick={copyEmail} className={textLink}>
-                  <Copy className="h-3.5 w-3.5" />
-                  {copied ? "Copied!" : "Copy email"}
-                </button>
-                <a href={personal.whatsapp} target="_blank" rel="noreferrer" className={textLink}>
-                  WhatsApp
-                  <ArrowUpRight className="h-3.5 w-3.5" weight="bold" />
-                </a>
-                {[
-                  ["GitHub", personal.github],
-                  ["LinkedIn", personal.linkedin],
-                  ["Instagram", personal.instagram],
-                ].map(([label, href]) => (
-                  <a key={label} href={href} target="_blank" rel="noreferrer" className={textLink}>
-                    {label}
-                    <ArrowUpRight className="h-3.5 w-3.5" weight="bold" />
-                  </a>
-                ))}
-              </div>
+                Send message
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--c-btn-ink)]/15">
+                  <ArrowRight className="h-4 w-4" weight="bold" />
+                </span>
+              </motion.a>
             </Reveal>
           </div>
 
-          {/* right — open form, no card */}
-          <Reveal delay={0.08} className="lg:col-span-7">
-            <motion.form
-              onSubmit={onSubmit}
-              className="border-t border-[var(--line)] pt-6"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
-                  04 — Write it
-                </p>
-                <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)] sm:block">
-                  Direct to inbox
-                </span>
-              </div>
-              <div className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-                <div className="flex flex-col gap-1">
-                  <label htmlFor="name" className={fieldLabel}>Full Name</label>
-                  <input id="name" name="name" required placeholder="Enter your full name" className={fieldCls} autoComplete="name" />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label htmlFor="email" className={fieldLabel}>Email Address</label>
-                  <input id="email" name="email" type="email" required placeholder="name@gmail.com" className={fieldCls} autoComplete="email" />
-                </div>
-              </div>
-              <div className="mt-6 flex flex-col gap-1">
-                <label htmlFor="subject" className={fieldLabel}>Subject</label>
-                <input
-                  id="subject"
-                  name="subject"
-                  required
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                  placeholder="Pick a topic on the left, or write your own"
-                  className={fieldCls}
-                />
-              </div>
-              <div className="mt-6 flex flex-col gap-1">
-                <label htmlFor="message" className={fieldLabel}>Message</label>
-                <textarea id="message" name="message" rows={5} required placeholder="Tell me about your project…" className={`${fieldCls} resize-y`} />
-              </div>
-              <motion.button
-                type="submit"
-                whileHover={reduce ? {} : { scale: 1.03 }}
-                whileTap={reduce ? {} : { scale: 0.97 }}
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-semibold text-white sm:w-auto"
+          {/* far-right icon rail ala referensi */}
+          <div className="hidden self-stretch lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-3 lg:border-l lg:border-[var(--c-line)] lg:pl-8">
+            {railLinks.map(({ label, href, Icon }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                title={label}
+                whileHover={reduce ? {} : { scale: 1.1, y: -2 }}
+                whileTap={reduce ? {} : { scale: 0.94 }}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--c-line)] text-[var(--c-muted)] transition-colors hover:text-[var(--accent)]"
               >
-                <PaperPlaneTilt className="h-4 w-4" weight="duotone" />
-                Send Message
-              </motion.button>
-              {sent ? (
-                <motion.p
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 flex items-center gap-2 text-sm text-[var(--accent)]"
-                  role="status"
-                >
-                  <Check className="h-4 w-4" weight="bold" />
-                  Your mail app should now open — I will reply shortly.
-                </motion.p>
-              ) : null}
-            </motion.form>
-          </Reveal>
+                <Icon className="h-5 w-5" />
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ===== BOTTOM — LET'S WORK TOGETHER (band kontras, ikut tema) ===== */}
+      <div className="bg-[var(--c-cta-bg)] text-[var(--c-cta-ink)] transition-colors duration-300">
+        <div className="mx-auto max-w-[1400px] px-4 py-12 text-center md:px-8 md:py-16">
+          <motion.h3
+            initial={reduce ? false : { opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-[15vw] font-extrabold uppercase leading-[0.85] tracking-tight sm:text-7xl md:text-8xl lg:text-[7rem]"
+          >
+            Let&apos;s work
+            <span className="block">together.</span>
+          </motion.h3>
+
+          <div className="mx-auto mt-8 flex max-w-[640px] items-center gap-4">
+            <span className="shrink-0 text-sm text-[var(--c-cta-muted)]">
+              Have a project in mind?
+            </span>
+            <a
+              href={`mailto:${personal.email}`}
+              aria-label="Say hello via email"
+              className="group flex flex-1 items-center gap-0"
+            >
+              <span className="h-[2px] flex-1 bg-[var(--c-cta-line)] transition-colors group-hover:bg-[var(--c-cta-ink)]" />
+              <ArrowRight
+                className="h-5 w-5 -ml-1 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                weight="bold"
+              />
+            </a>
+            <a
+              href={`mailto:${personal.email}`}
+              className="shrink-0 text-sm font-semibold hover:underline"
+            >
+              Say hello
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {bottomLinks.map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("mailto") ? undefined : "_blank"}
+                rel="noreferrer"
+                className="font-mono text-xs tracking-wide text-[var(--c-cta-muted)] transition-colors hover:text-[var(--c-cta-ink)]"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          {/* mobile socials (rail hidden di mobile) */}
+          <div className="mt-6 flex items-center justify-center gap-3 lg:hidden">
+            {railLinks.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--c-cta-line)] text-[var(--c-cta-muted)]"
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
+
+          <p className="mt-8 inline-flex items-center gap-2 rounded-full border border-[var(--c-cta-line)] px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-cta-muted)]">
+            <PaperPlaneTilt className="h-3.5 w-3.5" />
+            Direct to inbox — no spam, ever
+          </p>
         </div>
       </div>
     </section>

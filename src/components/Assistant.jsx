@@ -56,7 +56,7 @@ export default function Assistant() {
           style={{ bottom: "5.25rem" }}
         >
           <div className="flex items-center gap-2 border-b border-[var(--line)] bg-[var(--bg-soft)] px-4 py-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-green-500" aria-hidden="true" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[var(--status)]" aria-hidden="true" />
             <p className="text-sm font-semibold">Ask My Assistant</p>
             <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)]">
               Online
@@ -119,7 +119,7 @@ export default function Assistant() {
             <button
               type="submit"
               aria-label="Send message"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-white transition-transform hover:scale-105 active:scale-95"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-ink)] transition-transform hover:scale-105 active:scale-95"
             >
               <PaperPlaneTilt className="h-4 w-4" weight="duotone" />
             </button>

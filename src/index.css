@@ -20,20 +20,52 @@
   --accent-ink: #ffffff;
   --pill: #141210;
   --pill-ink: #fffcfa;
+  --status: #22c55e;
 }
 
 [data-theme="dark"] {
-  --bg: #0e0d0b;
-  --bg-soft: #171512;
-  --card: #1a1815;
+  --bg: #141210;
+  --bg-soft: #1e1b17;
+  --card: #1e1b17;
   --ink: #f2ede3;
   --muted: #b3aa9c;
   --faint: #7a7368;
-  --line: #2b2823;
+  --line: #2e2a25;
   --accent: #f04438;
   --accent-ink: #140a08;
   --pill: #f2ede3;
-  --pill-ink: #0e0d0b;
+  --pill-ink: #141210;
+  --status: #22c55e;
+}
+
+/* ---------- contact: selalu berkebalikan dari tema ----------
+   Light mode -> section gelap + band terang. Dark mode -> sebaliknya. */
+.contact-invert {
+  --c-bg: #141210;
+  --c-ink: #fffcfa;
+  --c-muted: #b3aa9c;
+  --c-line: #2e2a25;
+  --c-chip: rgba(255, 252, 250, 0.07);
+  --c-btn: #fffcfa;
+  --c-btn-ink: #141210;
+  --c-cta-bg: #ffffff;
+  --c-cta-ink: #141210;
+  --c-cta-muted: #6f6a61;
+  --c-cta-line: #e7dfd1;
+}
+
+[data-theme="dark"] .contact-invert {
+  --c-bg: #fffcfa;
+  --c-ink: #141210;
+  --c-muted: #6b6459;
+  --c-line: #d9d0bd;
+  --c-chip: rgba(255, 255, 255, 0.55);
+  --c-btn: #141210;
+  --c-btn-ink: #fffcfa;
+  --c-cta-bg: #141210;
+  --c-cta-ink: #fffcfa;
+  --c-cta-muted: rgba(255, 252, 250, 0.62);
+  --c-cta-line: rgba(255, 252, 250, 0.22);
 }
 
 html {
@@ -51,7 +83,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: #fffcfa;
 }
 
 .font-display {

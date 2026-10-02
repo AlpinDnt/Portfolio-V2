@@ -44,14 +44,14 @@ export default function Nav({ theme, onToggleTheme }) {
           aria-label="Site menu"
         >
            <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-4 md:px-8">
-            <span className="rounded-full bg-black px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            <span className="rounded-full bg-[#141210] px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#fffcfa]">
               {personal.nick} — menu
             </span>
             <button
               type="button"
               onClick={() => setOpen(false)}
               autoFocus
-              className="inline-flex items-center gap-2 rounded-full border border-white bg-black px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03] active:scale-95"
+              className="inline-flex items-center gap-2 rounded-full border border-[#fffcfa] bg-[#141210] px-5 py-2.5 text-sm font-semibold text-[#fffcfa] transition-transform hover:scale-[1.03] active:scale-95"
             >
               <X className="h-4 w-4" weight="bold" />
               CLOSE

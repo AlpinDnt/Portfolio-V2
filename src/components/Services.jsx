@@ -27,7 +27,7 @@ export default function Services() {
                   <GlowCard className="h-full w-full">
                     <div className="flex h-full flex-col p-7 text-left">
                       <div className="flex items-center justify-between">
-                        <span className="inline-flex items-center rounded-full bg-[var(--accent)] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white">
+                        <span className="inline-flex items-center rounded-full bg-[var(--accent)] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--accent-ink)]">
                           {s.badge}
                         </span>
                         <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--bg)]/60">
