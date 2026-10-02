@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { useReducedMotion } from "motion/react";
 
 const noise = (x, y, t) => {
@@ -15,16 +15,57 @@ const hexToRgb = (hex) =>
     Number.parseInt(hex.slice(5, 7), 16),
   ].join(", ");
 
+const DARK_PALETTE = {
+  background: "#141210",
+  line: "rgba(255, 252, 250, 0.14)",
+  bar: "#fffcfa",
+  accent: "#d92d20",
+};
+
+const LIGHT_PALETTE = {
+  background: "#fffcfa",
+  line: "rgba(20, 18, 16, 0.12)",
+  bar: "#141210",
+  accent: "#d92d20",
+};
+
 export default function SlidingEaseVerticalBars({
-  backgroundColor = "#141210",
-  lineColor = "rgba(255, 252, 250, 0.14)",
-  barColor = "#fffcfa",
-  accentBarColor = "#d92d20",
+  backgroundColor,
+  lineColor,
+  barColor,
+  accentBarColor,
+  adaptive = true,
   accentEvery = 6,
   lineWidth = 1,
   animationSpeed = 0.005,
   removeWaveLine = true,
 }) {
+  const [isDark, setIsDark] = useState(
+    () =>
+      typeof document !== "undefined" &&
+      document.documentElement.getAttribute("data-theme") === "dark"
+  );
+
+  useEffect(() => {
+    const el = document.documentElement;
+    const observer = new MutationObserver(() =>
+      setIsDark(el.getAttribute("data-theme") === "dark")
+    );
+    observer.observe(el, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
+
+  const colors = useMemo(() => {
+    if (!adaptive) {
+      return {
+        background: backgroundColor ?? DARK_PALETTE.background,
+        line: lineColor ?? DARK_PALETTE.line,
+        bar: barColor ?? DARK_PALETTE.bar,
+        accent: accentBarColor ?? DARK_PALETTE.accent,
+      };
+    }
+    return isDark ? DARK_PALETTE : LIGHT_PALETTE;
+  }, [adaptive, isDark, backgroundColor, lineColor, barColor, accentBarColor]);
   const canvasRef = useRef(null);
   const wrapRef = useRef(null);
   const timeRef = useRef(0);
@@ -135,17 +176,17 @@ export default function SlidingEaseVerticalBars({
         ? 4 * easingFactor * easingFactor * easingFactor
         : 1 - Math.pow(-2 * easingFactor + 2, 3) / 2;
 
-    const baseRgb = hexToRgb(barColor);
-    const accentRgb = hexToRgb(accentBarColor);
+    const baseRgb = hexToRgb(colors.bar);
+    const accentRgb = hexToRgb(colors.accent);
 
-    ctx.fillStyle = backgroundColor;
+    ctx.fillStyle = colors.background;
     ctx.fillRect(0, 0, width, height);
 
     for (let i = 0; i < numLines; i++) {
       const x = i * lineSpacing + lineSpacing / 2;
       const lineMouseInfluence = getMouseInfluence(x, height / 2);
       ctx.beginPath();
-      ctx.strokeStyle = lineColor;
+      ctx.strokeStyle = colors.line;
       ctx.lineWidth = lineWidth + lineMouseInfluence * 1.5;
       ctx.moveTo(x, 0);
       ctx.lineTo(x, height);
@@ -193,7 +234,7 @@ export default function SlidingEaseVerticalBars({
         }
       });
     }
-  }, [backgroundColor, lineColor, barColor, accentBarColor, accentEvery, lineWidth, animationSpeed, removeWaveLine]);
+  }, [colors, accentEvery, lineWidth, animationSpeed, removeWaveLine]);
 
   const animate = useCallback(() => {
     drawFrame();
@@ -268,7 +309,7 @@ export default function SlidingEaseVerticalBars({
   }, [animate, drawFrame, resizeCanvas, handleMouseMove, handleMouseLeave, handleMouseDown, handleMouseUp, reduce]);
 
   return (
-    <div ref={wrapRef} className="absolute inset-0 h-full w-full overflow-hidden" style={{ backgroundColor }}>
+    <div ref={wrapRef} className="absolute inset-0 h-full w-full overflow-hidden" style={{ backgroundColor: colors.background }}>
       <canvas ref={canvasRef} className="block h-full w-full" />
     </div>
   );
