@@ -48,19 +48,17 @@ export default function Hero() {
           >
             into <span className="text-stroke">clean</span>{" "}
             <motion.span
-              className="inline-flex translate-y-[-0.08em] items-center overflow-hidden rounded-full align-middle"
+              aria-hidden="true"
+              className="inline-flex h-[0.62em] w-[1.4em] translate-y-[-0.08em] items-center overflow-hidden rounded-full align-middle"
+              style={{
+                backgroundColor: "var(--accent)",
+                backgroundImage:
+                  "repeating-linear-gradient(90deg, transparent 0 14px, rgba(255,252,250,0.3) 14px 22px)",
+              }}
+              animate={reduce ? {} : { backgroundPositionX: [0, 22] }}
+              transition={reduce ? {} : { duration: 1.4, repeat: Infinity, ease: "linear" }}
               whileHover={reduce ? {} : { scale: 1.06, rotate: -2 }}
-            >
-              <img
-                src="/images/hero-code.svg"
-                alt="React code snippet"
-                width="320"
-                height="160"
-                fetchpriority="high"
-                className="h-[0.62em] w-[1.4em] rounded-full object-cover"
-                loading="eager"
-              />
-            </motion.span>{" "}
+            />{" "}
             interfaces
           </motion.span>
         </h1>
