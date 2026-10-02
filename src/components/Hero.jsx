@@ -52,8 +52,11 @@ export default function Hero() {
               whileHover={reduce ? {} : { scale: 1.06, rotate: -2 }}
             >
               <img
-                src="https://picsum.photos/seed/alpin-desk/320/160"
-                alt="Alpin's workspace"
+                src="/images/hero-code.svg"
+                alt="React code snippet"
+                width="320"
+                height="160"
+                fetchpriority="high"
                 className="h-[0.62em] w-[1.4em] rounded-full object-cover"
                 loading="eager"
               />
