@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowDown, ArrowUpRight, Asterisk } from "@phosphor-icons/react";
 import { hero, personal } from "../data.js";
+import FlowingDots from "./FlowingDots.jsx";
 
 export default function Hero() {
   const reduce = useReducedMotion();
@@ -49,18 +50,10 @@ export default function Hero() {
             into <span className="text-stroke">clean</span>{" "}
             <motion.span
               aria-hidden="true"
-              className="relative inline-flex h-[0.62em] w-[1.4em] translate-y-[-0.08em] items-center overflow-hidden rounded-full bg-[#0c0c0e] align-middle"
+              className="relative inline-flex h-[0.62em] w-[1.4em] translate-y-[-0.08em] items-center overflow-hidden rounded-full bg-[#141210] align-middle"
               whileHover={reduce ? {} : { scale: 1.06, rotate: -2 }}
             >
-              <motion.img
-                src="/images/hero-marble.svg"
-                alt=""
-                draggable={false}
-                className="h-full w-full object-cover"
-                loading="eager"
-                animate={reduce ? {} : { scale: [1.15, 1.32, 1.15], rotate: [0, 7, 0] }}
-                transition={reduce ? {} : { duration: 12, repeat: Infinity, ease: "easeInOut" }}
-              />
+              <FlowingDots />
             </motion.span>{" "}
             interfaces
           </motion.span>
