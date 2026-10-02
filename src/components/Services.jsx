@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, Browser, AppWindow, PaintBrush } from "@phosphor-icons/react";
 import Reveal from "./Reveal.jsx";
 import GlowCard from "./GlowCard.jsx";
@@ -8,8 +6,6 @@ import { services } from "../data.js";
 const icons = [Browser, AppWindow, PaintBrush];
 
 export default function Services() {
-  const [openIdx, setOpenIdx] = useState(0);
-
   return (
     <section id="services" className="scroll-mt-20">
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-24">
@@ -24,30 +20,12 @@ export default function Services() {
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {services.items.map((s, i) => {
-            const open = openIdx === i;
             const Icon = icons[i % icons.length];
             return (
               <Reveal key={s.name} delay={i * 0.06} className="h-full">
                 <div className="h-full transition-transform duration-300 hover:-translate-y-1">
                   <GlowCard className="h-full w-full">
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      aria-expanded={open}
-                      aria-label={`${s.name} — ${open ? "collapse" : "expand"} details`}
-                      onClick={(e) => {
-                        if (e.target.closest("a")) return;
-                        setOpenIdx(open ? -1 : i);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.target.closest("a")) return;
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault();
-                          setOpenIdx(open ? -1 : i);
-                        }
-                      }}
-                      className="flex h-full cursor-pointer flex-col p-7 text-left"
-                    >
+                    <div className="flex h-full flex-col p-7 text-left">
                       <div className="flex items-center justify-between">
                         <span className="inline-flex items-center rounded-full bg-[var(--accent)] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white">
                           {s.badge}
@@ -64,19 +42,9 @@ export default function Services() {
                         {s.name}
                       </h3>
 
-                      <AnimatePresence initial={false}>
-                        {open ? (
-                          <motion.p
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden text-sm leading-relaxed text-[var(--muted)]"
-                          >
-                            <span className="block pt-3">{s.desc}</span>
-                          </motion.p>
-                        ) : null}
-                      </AnimatePresence>
+                      <p className="pt-3 text-sm leading-relaxed text-[var(--muted)]">
+                        {s.desc}
+                      </p>
 
                       <a
                         href={s.wa}
