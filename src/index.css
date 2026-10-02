@@ -11,13 +11,13 @@
 [data-theme="light"] {
   --bg: #fffcfa;
   --bg-soft: #f5efe4;
-  --card: #ffffff;
+  --card: #fffcfa;
   --ink: #141210;
   --muted: #6f6a61;
   --faint: #a8a29a;
   --line: #e7dfd1;
   --accent: #d92d20;
-  --accent-ink: #ffffff;
+  --accent-ink: #fffcfa;
   --pill: #141210;
   --pill-ink: #fffcfa;
   --status: #22c55e;
@@ -48,7 +48,7 @@
   --c-chip: rgba(255, 252, 250, 0.07);
   --c-btn: #fffcfa;
   --c-btn-ink: #141210;
-  --c-cta-bg: #ffffff;
+  --c-cta-bg: #fffcfa;
   --c-cta-ink: #141210;
   --c-cta-muted: #6f6a61;
   --c-cta-line: #e7dfd1;
@@ -59,7 +59,7 @@
   --c-ink: #141210;
   --c-muted: #6b6459;
   --c-line: #d9d0bd;
-  --c-chip: rgba(255, 255, 255, 0.55);
+  --c-chip: rgba(255, 252, 250, 0.55);
   --c-btn: #141210;
   --c-btn-ink: #fffcfa;
   --c-cta-bg: #141210;
