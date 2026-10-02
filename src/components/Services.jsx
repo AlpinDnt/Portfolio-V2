@@ -30,7 +30,24 @@ export default function Services() {
               <Reveal key={s.name} delay={i * 0.06} className="h-full">
                 <div className="h-full transition-transform duration-300 hover:-translate-y-1">
                   <GlowCard className="h-full w-full">
-                    <div className="flex h-full flex-col p-7">
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      aria-expanded={open}
+                      aria-label={`${s.name} — ${open ? "collapse" : "expand"} details`}
+                      onClick={(e) => {
+                        if (e.target.closest("a")) return;
+                        setOpenIdx(open ? -1 : i);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.target.closest("a")) return;
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setOpenIdx(open ? -1 : i);
+                        }
+                      }}
+                      className="flex h-full cursor-pointer flex-col p-7 text-left"
+                    >
                       <div className="flex items-center justify-between">
                         <span className="inline-flex items-center rounded-full bg-[var(--accent)] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white">
                           {s.badge}
@@ -43,16 +60,9 @@ export default function Services() {
                       <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--faint)]">
                         0{i + 1}
                       </p>
-                      <button
-                        type="button"
-                        onClick={() => setOpenIdx(open ? -1 : i)}
-                        aria-expanded={open}
-                        className="mt-1 text-left"
-                      >
-                        <h3 className="font-display text-4xl font-bold uppercase leading-none tracking-tight">
-                          {s.name}
-                        </h3>
-                      </button>
+                      <h3 className="mt-1 font-display text-4xl font-bold uppercase leading-none tracking-tight">
+                        {s.name}
+                      </h3>
 
                       <AnimatePresence initial={false}>
                         {open ? (

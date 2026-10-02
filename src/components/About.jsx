@@ -3,7 +3,7 @@ import Reveal from "./Reveal.jsx";
 import { personal } from "../data.js";
 
 const stats = [
-  ["03", "Live projects"],
+  ["11", "Live projects"],
   ["08+", "Core tech"],
   ["03", "Services"],
   ["01", "Base — Bali"],
