@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ---------- loehx-style theme tokens ---------- */
+:root,
+[data-theme="light"] {
+  --bg: #fffcfa;
+  --bg-soft: #f5efe4;
+  --card: #ffffff;
+  --ink: #141210;
+  --muted: #6f6a61;
+  --faint: #a8a29a;
+  --line: #e7dfd1;
+  --accent: #d92d20;
+  --accent-ink: #ffffff;
+  --pill: #141210;
+  --pill-ink: #fffcfa;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0d0b;
+  --bg-soft: #171512;
+  --card: #1a1815;
+  --ink: #f2ede3;
+  --muted: #b3aa9c;
+  --faint: #7a7368;
+  --line: #2b2823;
+  --accent: #f04438;
+  --accent-ink: #140a08;
+  --pill: #f2ede3;
+  --pill-ink: #0e0d0b;
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-stretch: condensed;
+}
+
+/* giant outline text */
+.text-stroke {
+  -webkit-text-stroke: 1.5px var(--ink);
+  color: transparent;
+}
+[data-theme="dark"] .text-stroke {
+  -webkit-text-stroke: 1.5px var(--ink);
+}
+
+/* ---------- single marquee ---------- */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-x 22s linear infinite;
+  will-change: transform;
+}
+
+/* ---------- menu overlay ---------- */
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.menu-in {
+  animation: menu-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ---------- playful wiggle for pills ---------- */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(2deg) scale(1.04); }
+}
+
+/* ---------- grain (fixed, cheap) ---------- */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- chat dots ---------- */
+@keyframes blink-dot {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+.dot-blink {
+  animation: blink-dot 1s ease-in-out infinite;
+}
+
+/* ---------- spotlight cards (pointer-tracked, see GlowCard.jsx) ----------
+   Border glow + inner sheen follow the cursor via --mx/--my.
+   Only opacity transitions run — no per-frame filter/mask/blur repaint. */
+.spotlight {
+  position: relative;
+  border-radius: 16px;
+  padding: 1.5px;
+  background: var(--line);
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--spot-size, 260px) circle at var(--mx, 50%) var(--my, -20%),
+    var(--spot-color, var(--accent)) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+.spotlight-inner {
+  position: relative;
+  height: 100%;
+  border-radius: 15px;
+  background: var(--card);
+  overflow: hidden;
+}
+
+.spotlight-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--spot-size, 260px) circle at var(--mx, 50%) var(--my, -20%),
+    color-mix(in srgb, var(--spot-color, var(--accent)) 9%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.spotlight:hover .spotlight-inner::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .menu-in,
+  .dot-blink {
+    animation: none !important;
+  }
+  html { scroll-behavior: auto; }
+}
