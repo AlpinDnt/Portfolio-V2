@@ -19,3 +19,9 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# agent skills - local tooling, regenerable from skills-lock.json
+.agents/
+.claude/
+.hermes/
+.pi/
