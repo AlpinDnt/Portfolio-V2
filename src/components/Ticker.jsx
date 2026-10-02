@@ -16,7 +16,7 @@ export default function Ticker() {
   );
 
   return (
-    <div className="overflow-hidden border-y border-[var(--line)] bg-[var(--bg-soft)] py-3">
+    <div className="overflow-hidden border-y border-[var(--line)] bg-[var(--bg)] py-3">
       <div className="marquee-track flex w-max">
         {row(false)}
         {row(true)}
