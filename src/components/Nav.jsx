@@ -9,11 +9,8 @@ export default function Nav({ theme, onToggleTheme }) {
     <>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--line)] bg-[var(--bg)]/85 backdrop-blur-md">
         <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 md:px-8">
-          <a href="#home" className="flex items-center gap-2" aria-label="Back to top">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--pill)] font-display text-lg font-bold text-[var(--pill-ink)]">
-              A
-            </span>
-            <span className="font-mono text-xs uppercase tracking-[0.2em] opacity-70">
+          <a href="#home" aria-label="Back to top">
+            <span className="rounded-full bg-[var(--pill)] px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--pill-ink)]">
               {personal.nick} — {personal.role}
             </span>
           </a>
