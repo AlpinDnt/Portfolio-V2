@@ -14,7 +14,6 @@ import Reveal from "./Reveal.jsx";
 import { personal } from "../data.js";
 
 const availability = [
-  ["Status", "Open for projects", true],
   ["Base", "Bali · UTC+8", false],
   ["Work", "Remote worldwide", false],
   ["Reply", "Within a day", false],
@@ -57,13 +56,6 @@ export default function Contact() {
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-24">
         {/* ===== TOP — CONTACT US ===== */}
         <div className="flex flex-wrap items-center gap-3">
-          <p className="inline-flex items-center gap-2 rounded-full border border-[var(--c-line)] bg-[var(--c-chip)] px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-muted)]">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute h-full w-full animate-ping rounded-full bg-[var(--status)] opacity-60" />
-              <span className="h-2 w-2 rounded-full bg-[var(--status)]" />
-            </span>
-            Open for projects
-          </p>
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-muted)]">
             Usually replies within a day
           </p>
