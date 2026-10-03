@@ -13,9 +13,6 @@ export default function Services() {
           <h2 className="font-display text-5xl font-extrabold uppercase leading-none tracking-tight md:text-7xl">
             {services.title}
           </h2>
-          <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]">
-            Move your cursor across the cards — the light follows
-          </p>
         </Reveal>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
