@@ -146,7 +146,7 @@ export const assistantRules = [
   {
     keys: ["reach", "contact", "email", "whatsapp", "hire"],
     reply:
-      "Best way: email ptu.alvi@gmail.com or WhatsApp +62 823-2549-4970. He usually replies within a day. Want me to open the contact form?",
+      "Best way: email ptu.alvi@gmail.com or WhatsApp +62 823-2549-4970. Feel free to say hello!",
   },
   {
     keys: ["available", "freelance", "open", "hire"],
