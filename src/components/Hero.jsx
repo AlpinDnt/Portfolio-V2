@@ -18,19 +18,6 @@ export default function Hero() {
         }}
       />
       <div className="relative mx-auto max-w-[1400px] px-4 pb-10 pt-10 md:px-8 md:pt-14">
-        <motion.p
-          initial={reduce ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--card)] px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute h-full w-full animate-ping rounded-full bg-[var(--status)] opacity-60" />
-              <span className="h-2 w-2 rounded-full bg-[var(--status)]" />
-          </span>
-          Available for freelance
-        </motion.p>
-
         {/* kinetic headline — 2 visual lines */}
         <h1 className="mt-6 font-display font-extrabold uppercase leading-[0.88] tracking-tight">
           <motion.span
