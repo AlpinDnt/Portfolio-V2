@@ -5,7 +5,7 @@ import { personal } from "../data.js";
 const stats = [
   ["11", "Live projects"],
   ["08+", "Core tech"],
-  ["03", "Services"],
+  ["03", "Focus Areas"],
   ["01", "Base — Bali"],
 ];
 
