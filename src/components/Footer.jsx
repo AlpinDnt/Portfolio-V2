@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowUp, GithubLogo, LinkedinLogo, InstagramLogo, Sun, Moon } from "@phosphor-icons/react";
+import { ArrowUp, Sun, Moon } from "@phosphor-icons/react";
 import { personal, navLinks } from "../data.js";
 
 export default function Footer({ theme, onToggleTheme }) {
@@ -38,24 +38,6 @@ export default function Footer({ theme, onToggleTheme }) {
             ))}
           </nav>
           <div className="flex items-center gap-2 md:justify-end">
-            {[
-              { label: "GitHub", href: personal.github, Icon: GithubLogo },
-              { label: "LinkedIn", href: personal.linkedin, Icon: LinkedinLogo },
-              { label: "Instagram", href: personal.instagram, Icon: InstagramLogo },
-            ].map(({ label, href, Icon }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={label}
-                whileHover={reduce ? {} : { scale: 1.1, y: -2 }}
-                whileTap={reduce ? {} : { scale: 0.94 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)]"
-              >
-                <Icon className="h-5 w-5" />
-              </motion.a>
-            ))}
             <motion.button
               type="button"
               onClick={onToggleTheme}
