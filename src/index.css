@@ -63,9 +63,9 @@
   --c-btn: #141210;
   --c-btn-ink: #fffcfa;
   --c-cta-bg: #141210;
-  --c-cta-ink: #fffcfa;
-  --c-cta-muted: rgba(255, 252, 250, 0.62);
-  --c-cta-line: rgba(255, 252, 250, 0.22);
+  --c-cta-ink: #f2ede3;
+  --c-cta-muted: rgba(242, 237, 227, 0.62);
+  --c-cta-line: rgba(242, 237, 227, 0.22);
 }
 
 html {
