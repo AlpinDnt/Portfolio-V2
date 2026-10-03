@@ -29,7 +29,6 @@ export const marqueeItems = [
   "Are you?",
   "React interfaces",
   "E-commerce UI",
-  "Open for freelance",
   "Bali, Indonesia",
 ];
 
@@ -76,25 +75,19 @@ export const skills = {
 };
 
 export const services = {
-  title: "Services / Availability",
+  title: "What I Do",
   items: [
     {
       name: "Landing Pages",
-      badge: "NOW",
-      desc: "Responsive, high-converting pages for products, cafes and campaigns. From current content to a faster, cleaner relaunch.",
-      wa: "https://wa.me/6282325494970?text=Hi%20Alvi!%20I%20need%20a%20landing%20page%20for%20my%20business.%20Can%20we%20discuss%20it%3F",
+      desc: "Responsive landing pages built with React and Tailwind — clean layout, clear sections, and fast loading on any device.",
     },
     {
       name: "Web Apps",
-      badge: "NOW",
-      desc: "Interactive React apps with real features: search, carts, dashboards. Owned end to end, shipped fast.",
-      wa: "https://wa.me/6282325494970?text=Hi%20Alvi!%20I%20want%20to%20build%20a%20web%20app.%20Here%20is%20what%20I%20have%20in%20mind%3A",
+      desc: "Interactive React interfaces with features like search, filters, carts, and dashboards — small components, predictable state.",
     },
     {
-      name: "UI Revamps",
-      badge: "NOW",
-      desc: "Turn an outdated page into a modern, fast interface with clearer structure, better SEO and accessibility.",
-      wa: "https://wa.me/6282325494970?text=Hi%20Alvi!%20I%20want%20to%20revamp%20my%20website%20UI.%20Can%20you%20take%20a%20look%3F",
+      name: "Website Redesign",
+      desc: "Rebuilding outdated pages into modern, fast React interfaces with clearer structure and better accessibility. Figma only as reference.",
     },
   ],
 };
@@ -158,7 +151,7 @@ export const assistantRules = [
   {
     keys: ["available", "freelance", "open", "hire"],
     reply:
-      "Yes — open for freelance landing pages, React web apps and UI revamps right now. Share your brief and he will scope it fast.",
+      "He is focused on building landing pages, React web apps and website redesigns. Check the What I Do and Selected work sections.",
   },
   {
     keys: ["stack", "skill", "tech", "react", "experience"],
@@ -185,7 +178,7 @@ export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Skills", href: "#skills" },
   { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
+  { label: "What I Do", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
