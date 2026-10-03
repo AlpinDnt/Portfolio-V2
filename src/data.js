@@ -25,8 +25,8 @@ export const hero = {
 };
 
 export const marqueeItems = [
-  "The web is changing",
-  "Are you?",
+  "Clean code",
+  "Fast interfaces",
   "React interfaces",
   "E-commerce UI",
   "Bali, Indonesia",
