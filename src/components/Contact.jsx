@@ -16,7 +16,6 @@ import { personal } from "../data.js";
 const availability = [
   ["Base", "Bali · UTC+8", false],
   ["Work", "Remote worldwide", false],
-  ["Reply", "Within a day", false],
 ];
 
 const railLinks = [
@@ -55,12 +54,6 @@ export default function Contact() {
     >
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-24">
         {/* ===== TOP — CONTACT US ===== */}
-        <div className="flex flex-wrap items-center gap-3">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-muted)]">
-            Usually replies within a day
-          </p>
-        </div>
-
         <Reveal>
           <h2 className="mt-6 font-display text-[17vw] font-extrabold uppercase leading-[0.85] tracking-tight text-[var(--c-ink)] sm:text-7xl md:text-8xl lg:text-[7.5rem]">
             Contact us
@@ -68,8 +61,8 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={0.06}>
           <p className="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-[var(--c-muted)]">
-            Have any projects in mind? Don&apos;t hesitate to reach out,
-            and let&apos;s have a conversation.
+            Want to get in touch? Feel free to reach out,
+            my inbox is always open.
           </p>
         </Reveal>
 
@@ -143,12 +136,12 @@ export default function Contact() {
           <div className="flex flex-col justify-center self-stretch border-t border-[var(--c-line)] pt-10 lg:border-l lg:border-t-0 lg:px-12 lg:pt-0">
             <Reveal className="flex h-full flex-col justify-center">
               <h3 className="text-[15px] font-extrabold uppercase leading-tight tracking-tight text-[var(--c-ink)]">
-                Send a suggestion
+                Say hello
               </h3>
               <p className="mt-2 max-w-[38ch] text-[12.5px] leading-relaxed text-[var(--c-muted)]">
-                Have A Landing Page, Web App, Or UI Revamp In Mind?
-                Share Your Brief — I&apos;ll Reply With Scope,
-                Timeline, And Next Steps.
+                Want to connect, share feedback, or just say hi?
+                My inbox is always open — I&apos;ll get back
+                to you as soon as I can.
               </p>
               <motion.a
                 href={personal.whatsapp}
