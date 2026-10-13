@@ -2,13 +2,6 @@ import { motion, useReducedMotion } from "motion/react";
 import ScrollLinkedText from "./ScrollLinkedText.jsx";
 import { personal } from "../data.js";
 
-const stats = [
-  ["11", "Live projects"],
-  ["08+", "Core tech"],
-  ["03", "Focus Areas"],
-  ["01", "Base — Bali"],
-];
-
 const aboutSegments = [
   { t: "I am a Junior Web Developer based in" },
   { t: "Bali,", cls: "text-[var(--accent)]" },
@@ -62,33 +55,6 @@ export default function About() {
       <div className="mx-auto max-w-[1400px] px-4 pb-16 md:px-8 md:pb-24">
         <div className="lg:hidden">
           <PhotoFigure reduce={reduce} />
-        </div>
-        <div className="grid lg:grid-cols-12 lg:gap-10">
-        <motion.dl
-          className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--line)] sm:grid-cols-4 lg:col-span-7"
-          initial={reduce ? false : "hidden"}
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07 } } }}
-        >
-          {stats.map(([v, l]) => (
-            <motion.div
-              key={l}
-              variants={
-                reduce
-                  ? {}
-                  : { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }
-              }
-              transition={{ duration: 0.45 }}
-              className="bg-[var(--bg)] p-4"
-            >
-              <dt className="font-display text-3xl font-extrabold">{v}</dt>
-              <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                {l}
-              </dd>
-            </motion.div>
-          ))}
-        </motion.dl>
         </div>
       </div>
     </section>
