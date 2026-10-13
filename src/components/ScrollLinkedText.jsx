@@ -32,6 +32,7 @@ export default function ScrollLinkedText({
   offset = ["start 0.85", "start 0.35"],
   sticky = false,
   height = "250vh",
+  aside = null,
 }) {
   const containerRef = useRef(null);
   const textRef = useRef(null);
@@ -52,10 +53,13 @@ export default function ScrollLinkedText({
   if (sticky) {
     return (
       <div ref={containerRef} className="relative" style={{ height }}>
-        <div className="sticky top-0 flex min-h-[100svh] items-start justify-center px-4 pt-28 md:px-8 md:pt-32">
-          <p ref={textRef} className={className}>
-            <Words text={text} progress={scrollYProgress} />
-          </p>
+        <div className="sticky top-16 flex min-h-[calc(100svh-4rem)] items-center px-4 py-10 md:px-8">
+          <div className="mx-auto grid w-full max-w-[1400px] items-center gap-8 lg:grid-cols-12 lg:gap-10">
+            <p ref={textRef} className={`${className}${aside ? " lg:col-span-7" : ""}`}>
+              <Words text={text} progress={scrollYProgress} />
+            </p>
+            {aside ? <div className="hidden lg:col-span-5 lg:block">{aside}</div> : null}
+          </div>
         </div>
       </div>
     );
