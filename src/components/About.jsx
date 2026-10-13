@@ -9,8 +9,15 @@ const stats = [
   ["01", "Base — Bali"],
 ];
 
-const aboutText =
-  "I am a Junior Web Developer based in Bali, focused on modern frontend work. I turn visual concepts into interactive, high-performance web apps — clean code, responsive layouts, and interfaces that feel instant. Currently deep in React.js, Tailwind CSS and modern web architecture. Learning every day, shipping every week.";
+const aboutSegments = [
+  { t: "I am a Junior Web Developer based in" },
+  { t: "Bali,", cls: "text-[var(--accent)]" },
+  { t: "focused on modern frontend work. I turn visual concepts into" },
+  { t: "interactive,", cls: "italic" },
+  { t: "high-performance web apps — clean code, responsive layouts, and interfaces that feel" },
+  { t: "instant.", cls: "italic" },
+  { t: "Currently deep in React.js, Tailwind CSS and modern web architecture. Learning every day, shipping every week." },
+];
 
 function PhotoFigure({ reduce }) {
   return (
@@ -47,8 +54,9 @@ export default function About() {
       <ScrollLinkedText
         sticky
         height="200vh"
-        text={aboutText}
-        className="text-2xl font-semibold leading-[1.15] tracking-tight text-[var(--ink)] md:text-4xl lg:text-[2.75rem]"
+        segments={aboutSegments}
+        revealEnd={0.45}
+        className="text-[1.65rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--ink)] md:text-5xl lg:text-[3.4rem]"
         aside={<PhotoFigure reduce={reduce} />}
       />
       <div className="mx-auto max-w-[1400px] px-4 pb-16 md:px-8 md:pb-24">
