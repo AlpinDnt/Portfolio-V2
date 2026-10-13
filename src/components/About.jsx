@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import Reveal from "./Reveal.jsx";
+import ScrollLinkedText from "./ScrollLinkedText.jsx";
 import { personal } from "../data.js";
 
 const stats = [
@@ -30,15 +31,12 @@ export default function About() {
               </motion.span>
             </span>
           </h2>
-          <p className="mt-6 max-w-[60ch] leading-relaxed text-[var(--muted)]">
-            I am a Junior Web Developer based in Bali, focused on modern frontend work. I turn
-            visual concepts into interactive, high-performance web apps — clean code, responsive
-            layouts, and interfaces that feel instant.
-          </p>
-          <p className="mt-4 max-w-[60ch] leading-relaxed text-[var(--muted)]">
-            Currently deep in React.js, Tailwind CSS and modern web architecture. Learning every
-            day, shipping every week.
-          </p>
+          <ScrollLinkedText
+            sticky
+            height="200vh"
+            text="I am a Junior Web Developer based in Bali, focused on modern frontend work. I turn visual concepts into interactive, high-performance web apps — clean code, responsive layouts, and interfaces that feel instant. Currently deep in React.js, Tailwind CSS and modern web architecture. Learning every day, shipping every week."
+            className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-[var(--ink)] md:text-4xl lg:text-5xl"
+          />
           <motion.dl
             className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--line)] sm:grid-cols-4"
             initial={reduce ? false : "hidden"}
@@ -65,7 +63,7 @@ export default function About() {
             ))}
           </motion.dl>
         </Reveal>
-        <Reveal delay={0.1} className="lg:col-span-5">
+        <Reveal delay={0.1} className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
           <motion.figure
             whileHover={reduce ? {} : { y: -5 }}
             transition={{ type: "spring", stiffness: 260, damping: 22 }}
