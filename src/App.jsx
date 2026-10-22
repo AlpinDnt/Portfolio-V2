@@ -38,7 +38,7 @@ export default function App() {
     document.documentElement.setAttribute("data-theme", theme);
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "dark" ? "#050403" : "#fffcfa");
+      ?.setAttribute("content", theme === "dark" ? "#141210" : "#fffcfa");
     try {
       localStorage.setItem("alpindnt-theme", theme);
     } catch {
