@@ -24,17 +24,17 @@
 }
 
 [data-theme="dark"] {
-  --bg: #141210;
-  --bg-soft: #1e1b17;
-  --card: #1e1b17;
+  --bg: #0d0b09;
+  --bg-soft: #17110f;
+  --card: #17110f;
   --ink: #f2ede3;
   --muted: #b3aa9c;
   --faint: #7a7368;
-  --line: #2e2a25;
+  --line: #23201e;
   --accent: #d92d20;
   --accent-ink: #fffcfa;
   --pill: #f2ede3;
-  --pill-ink: #141210;
+  --pill-ink: #0d0b09;
   --status: #22c55e;
 }
 
