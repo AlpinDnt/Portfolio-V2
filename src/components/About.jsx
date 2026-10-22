@@ -49,7 +49,7 @@ export default function About() {
         height="200vh"
         segments={aboutSegments}
         revealEnd={0.45}
-        className="font-sans text-[1.65rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--ink)] md:text-5xl lg:text-[3.4rem]"
+        className="text-[1.65rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--ink)] md:text-5xl lg:text-[3.4rem]"
         aside={<PhotoFigure reduce={reduce} />}
       />
       <div className="mx-auto max-w-[1400px] px-4 pb-16 md:px-8 md:pb-24">
