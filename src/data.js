@@ -33,43 +33,38 @@ export const marqueeItems = [
 ];
 
 export const skills = {
-  title: "Skills / Experience",
+  title: "Skills",
+  learning: "Next.js · TypeScript",
   items: [
     {
       name: "Web Development",
       years: "2 yrs",
-      tags: "HTML · CSS · JavaScript",
-      desc: "Started with semantic HTML and modern CSS, now shipping responsive layouts daily. I care about clean structure before any framework magic.",
+      tags: "React · Tailwind CSS · JavaScript",
+      desc: "My core stack: component-driven React, Tailwind for consistent responsive UI, and modern JavaScript.",
     },
     {
-      name: "React",
+      name: "UI & Interaction",
       years: "2 yrs",
-      tags: "Vite · Context API · Hooks",
-      desc: "My daily driver for interactive apps — search, filters, carts, modals and checkout flows. Components stay small and predictable.",
-    },
-    {
-      name: "Tailwind CSS",
-      years: "2 yrs",
-      tags: "Responsive · Design systems",
-      desc: "Utility-first styling for speed without mess. I build consistent spacing, type scales and dark themes straight in markup.",
+      tags: "Hooks · Context API · Responsive · Accessibility",
+      desc: "Small, predictable components with hooks and context. I turn Figma into responsive, accessible UI with consistent spacing, type scales and theme tokens.",
     },
     {
       name: "E-Commerce UI",
       years: "1 yr",
       tags: "Cart · Filters · Checkout",
-      desc: "Built fashion and booking storefronts with live search, category filters, cart drawers and product modals that feel instant.",
+      desc: "Fashion and booking storefronts with live search, category filters, cart drawers and product modals that stay fast on mobile.",
     },
     {
-      name: "Backend Basics",
+      name: "APIs & Data",
       years: "1 yr",
-      tags: "REST APIs · Node.js · LocalStorage",
-      desc: "Enough backend to wire APIs cleanly, persist state, and debug across the stack while frontend stays the focus.",
+      tags: "REST · Node.js · LocalStorage",
+      desc: "Wiring REST endpoints, persisting client state and debugging across the stack. Frontend is the focus; I can hold my own on the data layer.",
     },
     {
-      name: "Tooling",
+      name: "Tooling & Deployment",
       years: "2 yrs",
-      tags: "Git · GitHub · Vercel · Figma · VS Code",
-      desc: "Git branches, Vercel previews, Figma handoff. Small workflow, fast shipping, no drama.",
+      tags: "Git · GitHub · Vite · Vercel · Figma",
+      desc: "Feature branches, preview deploys and design handoff. Build, review, ship — a small, fast workflow.",
     },
   ],
 };

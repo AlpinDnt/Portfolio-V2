@@ -5,28 +5,47 @@ import Reveal from "./Reveal.jsx";
 import { skills } from "../data.js";
 
 function SkillRow({ item, open, onToggle, index }) {
+  const number = String(index + 1).padStart(2, "0");
   return (
-    <div className="border-b border-[var(--line)]">
+    <div
+      className={`border-b border-[var(--line)] transition-colors duration-300 ${
+        open ? "bg-[var(--bg-soft)]/40" : ""
+      }`}
+    >
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className="grid w-full grid-cols-12 items-center gap-2 py-5 text-left"
+        className="group grid w-full grid-cols-12 items-center gap-2 py-5 text-left"
       >
         <span className="col-span-8 sm:col-span-9">
-          <span className="block font-display text-3xl font-bold uppercase leading-none tracking-tight transition-transform duration-300 hover:translate-x-1 sm:text-5xl">
+          <span
+            aria-hidden="true"
+            className={`block font-mono text-[11px] uppercase tracking-[0.2em] transition-colors duration-300 ${
+              open
+                ? "text-[var(--accent-red)]"
+                : "text-[var(--faint)] group-hover:text-[var(--ink)]"
+            }`}
+          >
+            {number}
+          </span>
+          <span className="mt-1 block font-display text-3xl font-bold uppercase leading-none tracking-tight transition-transform duration-300 group-hover:translate-x-1 sm:text-5xl">
             {item.name}
           </span>
           <span className="mt-1 block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
             {item.tags}
           </span>
         </span>
-        <span className="col-span-3 text-right font-mono text-sm text-[var(--muted)] sm:col-span-2">
+        <span className="col-span-3 text-right font-mono text-sm text-[var(--faint)] sm:col-span-2">
           {item.years}
         </span>
         <span className="col-span-1 flex justify-end">
           <Plus
-            className={`h-5 w-5 transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+            className={`h-5 w-5 transition-all duration-300 ${
+              open
+                ? "rotate-45 text-[var(--accent-red)]"
+                : "text-[var(--faint)] group-hover:text-[var(--ink)]"
+            }`}
             weight="bold"
           />
         </span>
@@ -41,9 +60,6 @@ function SkillRow({ item, open, onToggle, index }) {
             className="overflow-hidden"
           >
             <p className="max-w-[65ch] pb-6 leading-relaxed text-[var(--muted)]">
-              <span className="mr-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--faint)]">
-                0{index + 1}
-              </span>
               {item.desc}
             </p>
           </motion.div>
@@ -82,6 +98,10 @@ export default function Skills() {
             />
           ))}
         </motion.div>
+        <p className="mt-6 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--faint)]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-red)]" aria-hidden="true" />
+          Currently learning: {skills.learning}
+        </p>
       </div>
     </section>
   );
