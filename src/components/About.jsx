@@ -4,7 +4,7 @@ import { personal } from "../data.js";
 
 const aboutSegments = [
   { t: "I am a Junior Web Developer based in" },
-  { t: "Bali,", cls: "text-[var(--accent)]" },
+  { t: "Bali,", cls: "text-[var(--accent-red)]" },
   { t: "focused on modern frontend work. I turn visual concepts into" },
   { t: "interactive,", cls: "italic" },
   { t: "high-performance web apps — clean code, responsive layouts, and interfaces that feel" },

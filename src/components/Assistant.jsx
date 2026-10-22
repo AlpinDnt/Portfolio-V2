@@ -42,8 +42,8 @@ export default function Assistant() {
         {open ? <X className="h-6 w-6" weight="bold" /> : <ChatCircleText className="h-6 w-6" weight="duotone" />}
         {!open ? (
           <span className="absolute -right-0.5 -top-0.5 flex h-3.5 w-3.5">
-            <span className="absolute h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-70" />
-            <span className="h-3.5 w-3.5 rounded-full bg-[var(--accent)]" />
+            <span className="absolute h-full w-full animate-ping rounded-full bg-[var(--accent-red)] opacity-70" />
+            <span className="h-3.5 w-3.5 rounded-full bg-[var(--accent-red)]" />
           </span>
         ) : null}
       </button>

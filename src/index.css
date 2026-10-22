@@ -18,6 +18,7 @@
   --line: #e7dfd1;
   --accent: #141210;
   --accent-ink: #fffcfa;
+  --accent-red: #b42318;
   --pill: #141210;
   --pill-ink: #fffcfa;
   --status: #22c55e;
@@ -33,6 +34,7 @@
   --line: #23201e;
   --accent: #ffffff;
   --accent-ink: #0d0b09;
+  --accent-red: #e5484d;
   --pill: #f2ede3;
   --pill-ink: #0d0b09;
   --status: #22c55e;
@@ -82,7 +84,7 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--accent-red);
   color: var(--accent-ink);
 }
 

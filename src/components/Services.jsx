@@ -21,11 +21,11 @@ export default function Services() {
             return (
               <Reveal key={s.name} delay={i * 0.06} className="h-full">
                 <div className="h-full transition-transform duration-300 hover:-translate-y-1">
-                  <GlowCard className="h-full w-full">
+                  <GlowCard glow="var(--accent-red)" className="h-full w-full">
                     <div className="flex h-full flex-col p-7 text-left">
                       <div className="flex items-center justify-start">
                         <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--bg)]/60">
-                          <Icon className="h-5 w-5 text-[var(--accent)]" weight="duotone" />
+                          <Icon className="h-5 w-5 text-[var(--accent-red)]" weight="duotone" />
                         </span>
                       </div>
 
