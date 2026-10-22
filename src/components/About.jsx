@@ -46,9 +46,8 @@ export default function About() {
     <section id="about" className="scroll-mt-20 border-t border-[var(--line)]">
       <ScrollLinkedText
         sticky
-        height="200vh"
+        height="160vh"
         segments={aboutSegments}
-        revealEnd={0.45}
         className="text-[1.65rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--ink)] md:text-5xl lg:text-[3.4rem]"
         aside={<PhotoFigure reduce={reduce} />}
       />
