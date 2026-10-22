@@ -35,10 +35,13 @@ export default function App() {
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    const root = document.documentElement;
+    root.setAttribute("data-theme", theme);
+    // Boot paint is done — re-enable the theme transition for user toggles.
+    root.classList.remove("preload");
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "dark" ? "#ffffff" : "#141210");
+      ?.setAttribute("content", theme === "dark" ? "#0d0b09" : "#fffcfa");
     try {
       localStorage.setItem("alpindnt-theme", theme);
     } catch {

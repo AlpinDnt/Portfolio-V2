@@ -83,6 +83,12 @@ body {
   transition: background 0.35s ease, color 0.35s ease;
 }
 
+/* Suppress the boot-time color transition; App removes this class after
+   mount so user-triggered theme toggles still animate. */
+html.preload body {
+  transition: none;
+}
+
 ::selection {
   background: var(--accent-red);
   color: var(--accent-ink);
