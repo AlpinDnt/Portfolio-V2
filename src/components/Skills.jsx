@@ -7,16 +7,12 @@ import { skills } from "../data.js";
 function SkillRow({ item, open, onToggle, index }) {
   const number = String(index + 1).padStart(2, "0");
   return (
-    <div
-      className={`border-b border-[var(--line)] transition-colors duration-300 ${
-        open ? "bg-[var(--bg-soft)]/40" : ""
-      }`}
-    >
+    <div className="border-b border-[var(--line)]">
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className="group grid w-full grid-cols-12 items-center gap-2 py-5 text-left"
+        className="group grid w-full grid-cols-12 items-center gap-2 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--accent-red)]"
       >
         <span className="col-span-8 sm:col-span-9">
           <span
